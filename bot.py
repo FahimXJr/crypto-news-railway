@@ -1,6 +1,7 @@
 import os
 import requests
 from telegram import Bot
+import time
 
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 CHANNEL_ID = os.getenv('CHANNEL_ID')  # e.g. '@yourchannel'
@@ -30,4 +31,6 @@ def post_news():
         bot.send_message(chat_id=CHANNEL_ID, text=news)
 
 if __name__ == '__main__':
-    post_news()
+    while True:
+        post_news()
+        time.sleep(3600)  # Sleep for 1 hour
